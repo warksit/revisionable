@@ -24,20 +24,6 @@ trait RevisionableTrait
     protected $dirtyData = array();
 
     /**
-     * Ensure that the bootRevisionableTrait is called only
-     * if the current installation is a laravel 4 installation
-     * Laravel 5 will call bootRevisionableTrait() automatically
-     */
-    public static function boot()
-    {
-        parent::boot();
-
-        if(!method_exists(get_called_class(), 'bootTraits')){
-            static::bootRevisionableTrait();
-        }
-    }
-
-    /**
      * Create the event listeners for the saving and saved events
      * This lets us save revisions whenever a save is made, no matter the
      * http method.
